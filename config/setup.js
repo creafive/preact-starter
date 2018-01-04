@@ -6,6 +6,8 @@ const Clean = require('clean-webpack-plugin');
 const Copy = require('copy-webpack-plugin');
 const HTML = require('html-webpack-plugin');
 const uglify = require('./uglify');
+const path = require('path');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const root = join(__dirname, '..');
 
@@ -18,6 +20,11 @@ module.exports = isProd => {
 		new HTML({ template: 'src/index.html' }),
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(isProd ? 'production' : 'development')
+		}),
+		new FaviconsWebpackPlugin({
+			logo: path.join(__dirname, '../src', 'static','icon.png'),
+			prefix: 'icons/',
+			inject: true
 		})
 	];
 
