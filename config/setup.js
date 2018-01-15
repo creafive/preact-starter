@@ -24,7 +24,19 @@ module.exports = isProd => {
 		new FaviconsWebpackPlugin({
 			logo: path.join(__dirname, '../src', 'static','icon.png'),
 			prefix: 'icons/',
-			inject: true
+			inject: false,
+			icons: {
+	      android: true,
+				firefox: true,
+	      appleIcon: true,
+	      appleStartup: true,
+				windows: true,
+	      coast: false,
+	      favicons: false,
+	      opengraph: false,
+	      twitter: false,
+	      yandex: false
+	    }
 		})
 	];
 
